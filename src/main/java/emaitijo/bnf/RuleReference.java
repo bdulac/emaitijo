@@ -1,4 +1,4 @@
-package work.bnf;
+package emaitijo.bnf;
 
 public class RuleReference implements ExpressionArgument {
 	

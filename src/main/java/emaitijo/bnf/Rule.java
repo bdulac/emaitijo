@@ -1,6 +1,6 @@
-package work.bnf;
+package emaitijo.bnf;
 
-import work.grammar.Grammar;
+import emaitijo.grammar.Grammar;
 
 public class Rule implements BnfElement {
 	

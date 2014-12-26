@@ -1,8 +1,8 @@
-package work.bnf;
+package emaitijo.bnf;
 
 import java.util.List;
 
-import work.grammar.Grammar;
+import emaitijo.grammar.Grammar;
 
 public class Expression implements ExpressionArgument {
 	

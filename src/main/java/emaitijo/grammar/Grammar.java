@@ -1,9 +1,9 @@
-package work.grammar;
+package emaitijo.grammar;
 
 import java.util.HashMap;
 
-import work.bnf.Expression;
-import work.bnf.Rule;
+import emaitijo.bnf.Expression;
+import emaitijo.bnf.Rule;
 
 public class Grammar extends HashMap<Rule, Expression> {
 

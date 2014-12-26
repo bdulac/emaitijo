@@ -1,11 +1,10 @@
-package work.bnf.tests;
+package emaitijo.grammar;
 
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import emaitijo.grammar.ANTLRGrammarGenerator;
 import junit.framework.TestCase;
-
-import work.grammar.ANTLRGrammarGenerator;
 
 public class ANTLRGrammarGeneratorTest extends TestCase {
 	

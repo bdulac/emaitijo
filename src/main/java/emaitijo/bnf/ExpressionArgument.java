@@ -1,4 +1,4 @@
-package work.bnf;
+package emaitijo.bnf;
 
 public interface ExpressionArgument extends BnfElement {
 

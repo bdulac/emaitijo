@@ -1,4 +1,4 @@
-package work.grammar;
+package emaitijo.grammar;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
