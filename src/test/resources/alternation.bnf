@@ -1,0 +1,1 @@
+alternation ::= {AVG |MAX |MIN |SUM} ([DISTINCT] state_field_path_expression) | COUNT ([DISTINCT] identification_variable | state_field_path_expression | single_valued_association_path_expression)
