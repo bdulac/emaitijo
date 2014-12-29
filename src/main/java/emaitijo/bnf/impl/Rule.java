@@ -1,8 +1,9 @@
-package emaitijo.bnf;
+package emaitijo.bnf.impl;
 
+import emaitijo.bnf.BnfElement;
 import emaitijo.grammar.Grammar;
 
-public class Rule implements BnfElement {
+public class Rule implements BnfElement, Comparable<Rule> {
 	
 	private String name;
 	
@@ -14,7 +15,7 @@ public class Rule implements BnfElement {
 		if(nm == null)throw new NullPointerException();
 		if(gmr == null)throw new NullPointerException();
 		grammar = gmr;
-		name = nm;
+		name = nm.trim();
 		expression = new Expression(expr, this);
 	}
 	
@@ -32,6 +33,19 @@ public class Rule implements BnfElement {
 
 	@Override
 	public String toAntlr() {
+		return name + "\n 	:" + expression.toAntlr();
+	}
+	
+	@Override
+	public String toString() {
 		return name;
+	}
+
+	@Override
+	public int compareTo(Rule o) {
+		if(o == null)return -1;
+		String str = this.toString();
+		String oStr = o.toString();
+		return str.compareTo(oStr);
 	}
 }

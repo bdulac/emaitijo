@@ -1,11 +1,12 @@
 package emaitijo.grammar;
 
-import java.util.HashMap;
+import java.util.Set;
+import java.util.TreeMap;
 
-import emaitijo.bnf.Expression;
-import emaitijo.bnf.Rule;
+import emaitijo.bnf.impl.Expression;
+import emaitijo.bnf.impl.Rule;
 
-public class Grammar extends HashMap<Rule, Expression> {
+public class Grammar extends TreeMap<Rule, Expression> {
 
 	/** @see java.io.Serializable */
 	private static final long serialVersionUID = -4639744150630285891L;
@@ -37,6 +38,25 @@ public class Grammar extends HashMap<Rule, Expression> {
 			Expression expr = get(r);
 			expr.notifyGrammarComplete();
 		}
+	}
+	
+	public String toAntlr() {
+		String result = "grammar " + name + ";";
+		for(Rule rule : keySet()) {
+			String instruction = rule.toAntlr();
+			if(instruction != null)result += "\n" + instruction;
+		}
+		return result;
+	}
+
+	public Expression getExpression(String ruleName) {
+		Set<Rule> rules = keySet();
+		for(Rule rule : rules) {
+			if(rule.getName().equals(ruleName)) {
+				return get(rule);
+			}
+		}
+		return null;
 	}
 	
 }

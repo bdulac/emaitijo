@@ -26,14 +26,11 @@ public class ANTLRGrammarGenerator {
 		FileReader fReader = new FileReader(f);
 		BufferedReader bReader = new BufferedReader(fReader);
 		String line = null;
-		String result = "grammar " + grammarName + ";";
 		Grammar grammar = new Grammar(grammarName);
 		while((line = bReader.readLine()) != null) {
 			if(isRule(line)) {
 				grammar.addRule(line);
 			}
-			String instruction = writeInstruction(line);
-			if(instruction != null)result += "\n" + instruction;
 		}
 		grammar.notifyGrammarComplete();
 		bReader.close();
@@ -43,16 +40,19 @@ public class ANTLRGrammarGenerator {
 		targetFile.createNewFile();
 		FileWriter fWriter = new FileWriter(targetFile);
 		BufferedWriter bWriter = new BufferedWriter(fWriter);
-		bWriter.write(result);
+		// bWriter.write(result);
+		String antlr = grammar.toAntlr();
+		bWriter.write(antlr);
 		bWriter.close();
 		fWriter.close();
-		return result;
+		return antlr;
 	}
 
 	private boolean isRule(String line) {
 		return line.contains("::=")||line.contains("=");
 	}
 
+	/*
 	private String writeInstruction(final String line) {
 		String instruction = line;
 		instruction = instruction.trim();
@@ -88,5 +88,5 @@ public class ANTLRGrammarGenerator {
 		}
 		return instruction;
 	}
-
+	*/
 }
