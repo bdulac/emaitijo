@@ -13,7 +13,7 @@ public class Literal implements ExpressionTerm {
 	
 	@Override
 	public String toAntlr() {
-		return '\'' + literal + '\'';
+		return '\'' + literal + "\' ";
 	}
 	
 	public String toString() {

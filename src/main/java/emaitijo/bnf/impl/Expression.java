@@ -228,7 +228,7 @@ public class Expression implements ExpressionTerm {
 		for(ExpressionTerm argument : expressionTerms) {
 			antlr += argument.toAntlr();
 		}
-		if(instruction)antlr += ";";
+		if(instruction)antlr += "\n;";
 		// TODO Write from arguments
 		return antlr;
 	}

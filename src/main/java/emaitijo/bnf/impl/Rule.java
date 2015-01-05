@@ -30,10 +30,18 @@ public class Rule implements BnfElement, Comparable<Rule> {
 	public Expression getExpression() {
 		return expression;
 	}
+	
+	public String toAntlrName() {
+		/*return name.toUpperCase().substring(0, 1) 
+				+ name.toLowerCase().substring(1);
+				*/
+		return name.toLowerCase();
+	}
 
 	@Override
 	public String toAntlr() {
-		return name + "\n 	:" + expression.toAntlr();
+		return toAntlrName() + "\n	:	" 
+				+ expression.toAntlr();
 	}
 	
 	@Override

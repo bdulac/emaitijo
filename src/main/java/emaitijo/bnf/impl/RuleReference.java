@@ -17,7 +17,7 @@ public class RuleReference implements ExpressionTerm {
 
 	@Override
 	public String toAntlr() {
-		return rule.getName();
+		return rule.toAntlrName() + ' ';
 	}
 	
 	@Override
