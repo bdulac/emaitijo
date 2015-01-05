@@ -7,12 +7,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-import java.util.regex.Pattern;
+import org.antlr.v4.Tool;
+import org.antlr.v4.tool.ErrorType;
 
-public class ANTLRGrammarGenerator {
+public class Bnf2AntlrConverter {
 	
-	public String transformBnf2Grammar(String location) throws IOException {
-		URL url = getClass().getClassLoader().getResource(location);
+	public String convert2Antlr(String bnfLocation, boolean gen) 
+			throws IOException {
+		URL url = getClass().getClassLoader().getResource(bnfLocation);
 		File f = new File(url.getPath());
 		String fName = f.getName();
 		int extIndex = fName.lastIndexOf(".");
@@ -45,7 +47,33 @@ public class ANTLRGrammarGenerator {
 		bWriter.write(antlr);
 		bWriter.close();
 		fWriter.close();
+		if(gen)executeAntlr(targetUrl);
 		return antlr;
+	}
+
+	private void executeAntlr(String targetUrl) {
+		String[] args = new String[] { targetUrl };
+		Tool antlr = new Tool(args);
+		if (args.length == 0) {
+			antlr.help();
+			antlr.exit(0);
+		}
+		try {
+			antlr.processGrammarsOnCommandLine();
+		} finally {
+			if (antlr.log) {
+				try {
+					String logname = antlr.logMgr.save();
+					System.out.println("wrote " + logname);
+				} catch (IOException ioe) {
+					antlr.errMgr.toolError(ErrorType.INTERNAL_ERROR, ioe);
+				}
+			}
+		}
+		if (antlr.errMgr.getNumErrors() > 0) {
+			antlr.exit(1);
+		}
+		antlr.exit(0);
 	}
 
 	private boolean isRule(String line) {
