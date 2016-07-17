@@ -1,7 +1,9 @@
 ēmaitijǭ
 ========
 
-[ēmaitijǭ](http://en.wiktionary.org/wiki/Appendix:Proto-Germanic/%C4%93maitij%C7%AD) is a BNF to ANTLR converter.
+In a few words, ēmaitijǭ is a BNF to ANTLR converter. 
+
+For more informations about the name, have a look at Proto-Germanic term entry in in [the wiktionary](https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/ēmaitijǭ).
 
 The project is a work in progress.
 
