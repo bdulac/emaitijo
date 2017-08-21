@@ -1,4 +1,4 @@
-ēmaitijǭ
+ēmaitijǭ (BNF, ANTLR)
 ========
 
 In a few words, ēmaitijǭ is a BNF to ANTLR converter. 
